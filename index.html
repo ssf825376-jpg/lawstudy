@@ -1,0 +1,2091 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0">
+<title>LAWSTUDY — เรียนกฎหมายจากเหตุการณ์</title>
+
+<style>
+*{box-sizing:border-box}
+:root{
+  --main:#111111;
+  --main2:#222222;
+  --soft:#f4f4f4;
+  --card:#ffffff;
+  --text:#171717;
+  --muted:#777;
+  --line:#dedede;
+  --accent:#111;
+  --danger:#d7263d;
+  --good:#16834a;
+  --shadow:0 8px 25px rgba(0,0,0,.08);
+}
+body{
+  margin:0;
+  background:var(--soft);
+  color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",
+  "Noto Sans Thai",Tahoma,sans-serif;
+}
+button,input,textarea,select{font:inherit}
+button{cursor:pointer}
+.top{
+  position:sticky;
+  top:0;
+  z-index:50;
+  background:var(--main);
+  color:#fff;
+  padding:14px 18px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  box-shadow:0 4px 18px rgba(0,0,0,.2);
+}
+.logo{
+  font-weight:900;
+  font-size:23px;
+  letter-spacing:.5px;
+}
+.top-right{
+  display:flex;
+  gap:8px;
+}
+.icon-btn{
+  width:44px;
+  height:44px;
+  border:0;
+  border-radius:14px;
+  background:rgba(255,255,255,.12);
+  color:#fff;
+  font-size:21px;
+}
+.container{
+  max-width:1100px;
+  margin:auto;
+  padding:20px;
+}
+.hero{
+  background:var(--main);
+  color:#fff;
+  border-radius:28px;
+  padding:32px 25px;
+  margin-bottom:20px;
+  position:relative;
+  overflow:hidden;
+}
+.hero:after{
+  content:"§";
+  position:absolute;
+  right:25px;
+  bottom:-30px;
+  font-size:180px;
+  opacity:.07;
+  font-weight:900;
+}
+.hero h1{
+  font-size:40px;
+  margin:0 0 8px;
+}
+.hero p{
+  color:#ddd;
+  margin:0;
+  line-height:1.7;
+}
+.stats{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:10px;
+  margin-top:22px;
+}
+.stat{
+  background:rgba(255,255,255,.1);
+  border:1px solid rgba(255,255,255,.16);
+  padding:14px;
+  border-radius:17px;
+}
+.stat b{
+  font-size:24px;
+  display:block;
+}
+.stat span{
+  color:#ccc;
+  font-size:13px;
+}
+.section-title{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin:28px 0 15px;
+}
+.section-title h2{
+  margin:0;
+  font-size:24px;
+}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:14px;
+}
+.card{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:22px;
+  padding:20px;
+  box-shadow:var(--shadow);
+}
+.category{
+  transition:.18s;
+}
+.category:hover{
+  transform:translateY(-2px);
+}
+.category-icon{
+  font-size:34px;
+}
+.category h3{
+  margin:10px 0 4px;
+  color:var(--accent);
+}
+.small{
+  color:var(--muted);
+  font-size:14px;
+}
+.btn{
+  border:0;
+  background:var(--main);
+  color:#fff;
+  padding:11px 16px;
+  border-radius:13px;
+  font-weight:700;
+}
+.btn.light{
+  background:var(--soft);
+  color:var(--text);
+  border:1px solid var(--line);
+}
+.btn.red{background:var(--danger)}
+.btn.green{background:var(--good)}
+.btn.full{
+  width:100%;
+}
+.search{
+  width:100%;
+  padding:14px 16px;
+  border:1px solid var(--line);
+  border-radius:15px;
+  background:#fff;
+  outline:none;
+  margin-bottom:15px;
+}
+.tabs{
+  display:flex;
+  gap:8px;
+  overflow:auto;
+  padding-bottom:5px;
+  margin-bottom:15px;
+}
+.tab{
+  white-space:nowrap;
+  border:1px solid var(--line);
+  background:#fff;
+  padding:9px 13px;
+  border-radius:999px;
+}
+.tab.active{
+  background:var(--main);
+  color:#fff;
+}
+.event-card{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:20px;
+  padding:18px;
+  margin-bottom:12px;
+}
+.badges{
+  display:flex;
+  gap:7px;
+  flex-wrap:wrap;
+  margin-bottom:10px;
+}
+.badge{
+  padding:5px 9px;
+  border-radius:999px;
+  font-size:12px;
+  background:#eee;
+}
+.badge.sim{
+  background:#eee;
+}
+.badge.real{
+  background:#fff0d7;
+}
+.badge.law{
+  background:#e8f1ff;
+}
+.event-title{
+  font-size:19px;
+  font-weight:800;
+}
+.event-story{
+  line-height:1.75;
+  color:#444;
+  margin:8px 0 14px;
+}
+.reader{
+  background:#fff;
+  border-radius:25px;
+  padding:22px;
+  box-shadow:var(--shadow);
+}
+.reader h1{
+  font-size:30px;
+  margin:0 0 8px;
+}
+.article-box{
+  background:#fafafa;
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:18px;
+  line-height:1.8;
+  margin:15px 0;
+}
+.source{
+  border-left:4px solid var(--accent);
+  background:#f7f7f7;
+  padding:14px;
+  border-radius:0 14px 14px 0;
+  margin-top:15px;
+}
+.case{
+  border:1px solid var(--line);
+  border-radius:17px;
+  padding:16px;
+  margin:10px 0;
+  background:#fff;
+}
+.case strong{
+  font-size:17px;
+}
+.case-summary{
+  color:#555;
+  line-height:1.7;
+  margin:7px 0;
+}
+.warning{
+  background:#fff8dd;
+  border:1px solid #eadb92;
+  border-radius:16px;
+  padding:15px;
+  line-height:1.7;
+}
+.goodbox{
+  background:#ecfff4;
+  border:1px solid #b8e9ca;
+  border-radius:16px;
+  padding:15px;
+}
+.quiz-question{
+  font-size:19px;
+  font-weight:800;
+  line-height:1.7;
+}
+textarea{
+  width:100%;
+  min-height:150px;
+  padding:14px;
+  border-radius:15px;
+  border:1px solid var(--line);
+  resize:vertical;
+  margin:12px 0;
+}
+.option{
+  border:1px solid var(--line);
+  background:#fff;
+  padding:14px;
+  border-radius:14px;
+  margin:8px 0;
+  width:100%;
+  text-align:left;
+}
+.option.selected{
+  border:2px solid var(--accent);
+}
+.modal{
+  position:fixed;
+  inset:0;
+  z-index:100;
+  background:rgba(0,0,0,.6);
+  display:none;
+  align-items:flex-end;
+  justify-content:center;
+}
+.modal.show{display:flex}
+.sheet{
+  width:min(100%,900px);
+  max-height:92vh;
+  overflow:auto;
+  background:var(--soft);
+  border-radius:28px 28px 0 0;
+  padding:20px;
+  animation:up .2s ease;
+}
+@keyframes up{
+  from{transform:translateY(100%)}
+  to{transform:translateY(0)}
+}
+.close{
+  float:right;
+  border:0;
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  background:#ddd;
+}
+.palette{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:10px;
+}
+.color{
+  border:2px solid #fff;
+  min-height:65px;
+  border-radius:16px;
+  box-shadow:0 3px 10px rgba(0,0,0,.15);
+  color:#fff;
+  font-weight:800;
+  text-shadow:0 1px 2px #000;
+}
+.empty{
+  text-align:center;
+  color:#888;
+  padding:30px 10px;
+}
+.footer{
+  text-align:center;
+  padding:35px 15px;
+  color:#777;
+  font-size:13px;
+}
+@media(max-width:700px){
+  .container{padding:12px}
+  .grid{grid-template-columns:1fr}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .hero h1{font-size:32px}
+}
+</style>
+</head>
+
+<body>
+
+<header class="top">
+  <div class="logo">⚖️ LAWSTUDY</div>
+  <div class="top-right">
+    <button class="icon-btn" onclick="openPalette()">🎨</button>
+    <button class="icon-btn" onclick="goHome()">⌂</button>
+  </div>
+</header>
+
+<main class="container" id="app"></main>
+
+<div class="modal" id="modal">
+  <div class="sheet" id="modalContent"></div>
+</div>
+
+<script>
+
+/* =========================================================
+   LAWSTUDY
+   ระบบเรียนกฎหมายจาก
+   ตัวบท → เหตุการณ์ → วิเคราะห์ → ฎีกา → แบบทดสอบ
+========================================================= */
+
+
+/* -------------------------
+   1. หมวดกฎหมาย
+------------------------- */
+
+const CATEGORIES = [
+ {id:"criminal",icon:"⚖️",name:"กฎหมายอาญา",desc:"ความผิดและโทษ"},
+ {id:"civil",icon:"📜",name:"กฎหมายแพ่ง",desc:"สิทธิ หนี้ สัญญา ทรัพย์"},
+ {id:"civilproc",icon:"🏛️",name:"วิธีพิจารณาความแพ่ง",desc:"การฟ้องคดีแพ่ง"},
+ {id:"criminalproc",icon:"👨‍⚖️",name:"วิธีพิจารณาความอาญา",desc:"กระบวนการคดีอาญา"},
+ {id:"labor",icon:"👔",name:"กฎหมายแรงงาน",desc:"นายจ้างและลูกจ้าง"},
+ {id:"land",icon:"🏠",name:"กฎหมายที่ดิน",desc:"กรรมสิทธิ์และที่ดิน"},
+ {id:"computer",icon:"💻",name:"อาชญากรรมทางคอมพิวเตอร์",desc:"คอมพิวเตอร์และโลกออนไลน์"},
+ {id:"tax",icon:"💰",name:"กฎหมายภาษี",desc:"ภาษีและหน้าที่ทางภาษี"},
+ {id:"family",icon:"👨‍👩‍👧",name:"กฎหมายครอบครัว",desc:"สมรส บุตร หย่า"},
+ {id:"bankruptcy",icon:"🏦",name:"กฎหมายล้มละลาย",desc:"หนี้และการฟื้นฟู"},
+ {id:"ip",icon:"💡",name:"ทรัพย์สินทางปัญญา",desc:"ลิขสิทธิ์ สิทธิบัตร เครื่องหมาย"},
+ {id:"consumer",icon:"🛒",name:"คุ้มครองผู้บริโภค",desc:"สิทธิของผู้บริโภค"},
+ {id:"admin",icon:"🏛️",name:"กฎหมายปกครอง",desc:"รัฐและประชาชน"},
+ {id:"drug",icon:"💊",name:"กฎหมายยาเสพติด",desc:"ความผิดเกี่ยวกับยาเสพติด"},
+ {id:"constitution",icon:"📘",name:"รัฐธรรมนูญ",desc:"สิทธิและโครงสร้างรัฐ"},
+ {id:"election",icon:"🗳️",name:"กฎหมายเลือกตั้ง",desc:"การเลือกตั้งและคุณสมบัติ"},
+ {id:"corruption",icon:"🔎",name:"กฎหมายทุจริต",desc:"คดีเจ้าหน้าที่รัฐ"}
+];
+
+
+/* -------------------------
+   2. ข้อมูลมาตราที่ตรวจสอบแล้ว
+------------------------- */
+
+const ARTICLES = {
+ "288":{
+   no:"288",
+   title:"ฆ่าผู้อื่น",
+   category:"criminal",
+   summary:"ผู้ใดฆ่าผู้อื่น ต้องระวางโทษตามที่กฎหมายกำหนด",
+   elements:[
+     "มีการกระทำต่อบุคคลอื่น",
+     "การกระทำนั้นเป็นเหตุให้ผู้อื่นถึงแก่ความตาย",
+     "ต้องพิจารณาเจตนาและข้อเท็จจริงประกอบ"
+   ],
+   source:"สถาบันนิติธรรมาลัย — ประมวลกฎหมายอาญา มาตรา 288",
+   sourceUrl:"https://www.drthawip.com/criminalcode/1-42"
+ },
+ "289":{
+   no:"289",
+   title:"ฆ่าผู้อื่นในกรณีฉกรรจ์",
+   category:"criminal",
+   summary:"เป็นกรณีการฆ่าที่กฎหมายกำหนดลักษณะร้ายแรงเป็นพิเศษ",
+   elements:[
+     "ต้องมีองค์ประกอบของการฆ่าผู้อื่น",
+     "ต้องปรากฏเหตุฉกรรจ์ตามที่กฎหมายบัญญัติ"
+   ],
+   source:"สถาบันนิติธรรมาลัย — ประมวลกฎหมายอาญา มาตรา 289",
+   sourceUrl:"https://www.drthawip.com/criminalcode/1-42"
+ },
+ "290":{
+   no:"290",
+   title:"ทำร้ายจนเป็นเหตุให้ถึงแก่ความตาย",
+   category:"criminal",
+   summary:"กรณีทำร้ายผู้อื่นโดยไม่มีเจตนาฆ่า แต่ผลของการทำร้ายทำให้ถึงแก่ความตาย",
+   elements:[
+     "มีการทำร้าย",
+     "ไม่มีเจตนาฆ่า",
+     "ผลคือผู้ถูกกระทำถึงแก่ความตาย"
+   ],
+   source:"สถาบันนิติธรรมาลัย — ประมวลกฎหมายอาญา มาตรา 290",
+   sourceUrl:"https://www.drthawip.com/criminalcode/1-42"
+ },
+ "291":{
+   no:"291",
+   title:"กระทำโดยประมาทเป็นเหตุให้ผู้อื่นถึงแก่ความตาย",
+   category:"criminal",
+   summary:"เป็นกรณีการกระทำโดยประมาทซึ่งเป็นเหตุให้ผู้อื่นถึงแก่ความตาย",
+   elements:[
+     "มีการกระทำ",
+     "การกระทำเป็นการประมาท",
+     "มีความตายเป็นผล"
+   ],
+   source:"สถาบันนิติธรรมาลัย — ประมวลกฎหมายอาญา มาตรา 291",
+   sourceUrl:"https://www.drthawip.com/criminalcode/1-42"
+ },
+ "292":{
+   no:"292",
+   title:"การกระทำทารุณต่อผู้พึ่งตนเองไม่ได้",
+   category:"criminal",
+   summary:"เกี่ยวกับการกระทำทารุณต่อบุคคลซึ่งอยู่ในภาวะพึ่งพิงตามองค์ประกอบที่กฎหมายกำหนด",
+   elements:[
+     "สถานะของผู้ถูกกระทำ",
+     "ลักษณะการทารุณ",
+     "ผลตามที่มาตรากำหนด"
+   ],
+   source:"สถาบันนิติธรรมาลัย — ประมวลกฎหมายอาญา มาตรา 292",
+   sourceUrl:"https://www.drthawip.com/criminalcode/1-42"
+ },
+ "293":{
+   no:"293",
+   title:"ช่วยหรือยุยงให้เด็กหรือผู้ขาดความสามารถฆ่าตัวตาย",
+   category:"criminal",
+   summary:"เป็นความผิดที่เกี่ยวข้องกับการช่วยหรือยุยงบุคคลตามเงื่อนไขที่กฎหมายกำหนด",
+   elements:[
+     "ผู้กระทำมีการช่วยหรือยุยง",
+     "ผู้ถูกกระทำอยู่ในกลุ่มบุคคลที่มาตรากำหนด",
+     "พิจารณาผลและเจตนาตามข้อเท็จจริง"
+   ],
+   source:"สถาบันนิติธรรมาลัย — ประมวลกฎหมายอาญา มาตรา 293",
+   sourceUrl:"https://www.drthawip.com/criminalcode/1-42"
+ },
+ "294":{
+   no:"294",
+   title:"เข้าร่วมในการชุลมุนต่อสู้",
+   category:"criminal",
+   summary:"เกี่ยวกับการเข้าร่วมในการชุลมุนต่อสู้ตั้งแต่สามคนขึ้นไปและมีผลตามที่มาตรากำหนด",
+   elements:[
+     "มีการชุลมุนต่อสู้",
+     "มีผู้เข้าร่วมตั้งแต่จำนวนที่กฎหมายกำหนด",
+     "มีผลตามที่กฎหมายกำหนด"
+   ],
+   source:"สถาบันนิติธรรมาลัย — ประมวลกฎหมายอาญา มาตรา 294",
+   sourceUrl:"https://www.drthawip.com/criminalcode/1-42"
+ }
+};
+
+
+/* -------------------------
+   3. ฎีกาที่ตรวจสอบได้
+------------------------- */
+
+const DEKA = {
+
+ "288":[
+  {
+   no:"988/2568",
+   title:"เจตนาฆ่า / ฆ่าโดยไตร่ตรองไว้ก่อน",
+   summary:"คำพิพากษาฎีกาที่ 988/2568 มีประเด็นเกี่ยวกับเจตนาฆ่าและข้ออ้างเรื่องการขาดสติ รวมถึงประเด็นการฆ่าโดยไตร่ตรองไว้ก่อน",
+   url:"https://deka.in.th/deka/2568-988"
+  },
+  {
+   no:"7400/2568",
+   title:"การป้องกันโดยชอบด้วยกฎหมาย",
+   summary:"คำพิพากษาฎีกาที่ 7400/2568 พิจารณาพฤติการณ์การถูกทำร้ายและภยันตรายที่ยังใกล้จะถึงในขณะเกิดเหตุ",
+   url:"https://deka.in.th/deka/2568-7400"
+  },
+  {
+   no:"5729/2556",
+   title:"องค์ประกอบภายนอกของความผิดฐานฆ่าผู้อื่น",
+   summary:"คำพิพากษาฎีกาที่ 5729/2556 อธิบายประเด็นเรื่องความรู้ข้อเท็จจริงอันเป็นองค์ประกอบของความผิดฐานฆ่าผู้อื่น",
+   url:"https://deka.in.th/deka/2556-5729"
+  }
+ ],
+
+ "289":[],
+ "290":[],
+ "291":[],
+ "292":[],
+ "293":[],
+ "294":[]
+};
+
+
+/* -------------------------
+   4. URL ค้นฎีกา
+------------------------- */
+
+function dekaSearch(article){
+  return "https://deka.in.th/laws/pc/"+article+"/dekas";
+}
+
+
+/* -------------------------
+   5. สถานการณ์จำลอง
+   สร้าง 30 เรื่อง / หมวด
+------------------------- */
+
+const SIM_TEMPLATES = {
+
+ criminal:[
+  ["ทะเลาะวิวาทหน้าร้าน","A มีปากเสียงกับ B ก่อนใช้อาวุธทำร้ายจน B บาดเจ็บ"],
+  ["ใช้มีดทำร้ายคู่กรณี","A ใช้มีดทำร้าย B หลังมีปากเสียงกัน"],
+  ["ยิงจากระยะไกล","A ยิงไปยังบริเวณที่ B อยู่และ B ได้รับบาดเจ็บ"],
+  ["เตรียมอาวุธไปหาอีกฝ่าย","A เตรียมอาวุธก่อนเดินทางไปพบ B"],
+  ["ถูกยั่วยุแล้วลงมือ","A ถูก B พูดจาดูหมิ่นและเกิดเหตุทำร้ายกัน"],
+  ["ป้องกันตัว","B เข้ามาทำร้าย A ก่อน แล้ว A ตอบโต้"],
+  ["ป้องกันเกินกว่าเหตุ","A ถูกทำร้ายแต่การตอบโต้รุนแรงกว่าที่จำเป็น"],
+  ["ยิงแต่เป้าหมายหลบได้","A ตั้งใจยิง B แต่ B หลบได้"],
+  ["เข้าใจผิดว่าอีกฝ่ายเสียชีวิต","A กระทำต่อ B แล้วเข้าใจว่า B เสียชีวิต"],
+  ["ร่วมกันทำร้าย","A และ B ตกลงกันไปทำร้าย C"],
+  ["ผู้ร่วมกระทำคนหนึ่งใช้อาวุธ","A กับ B ไปหา C แต่ A ใช้อาวุธทำร้าย"],
+  ["ข่มขู่คู่กรณี","A ข่มขู่ B เพื่อให้ B กลัว"],
+  ["ทำร้ายโดยไม่มีเจตนาฆ่า","A ผลัก B ล้มและเกิดผลร้ายแรง"],
+  ["ขับรถโดยประมาท","A ขับรถโดยไม่ระมัดระวังจนเกิดอุบัติเหตุ"],
+  ["อุบัติเหตุในพื้นที่ชุมชน","A ขับรถเร็วในบริเวณคนพลุกพล่าน"],
+  ["การชุลมุน","กลุ่มคนหลายคนทะเลาะและเข้าร่วมทำร้ายกัน"],
+  ["แย่งอาวุธจากผู้ก่อเหตุ","A แย่งอาวุธจาก B แล้วเกิดการต่อสู้"],
+  ["ผู้เสียหายเริ่มเหตุ","B เข้ามาทำร้าย A ก่อน"],
+  ["เหตุในสถานที่สาธารณะ","เกิดเหตุทำร้ายร่างกายในตลาด"],
+  ["เหตุจากความขัดแย้งเรื่องทรัพย์","A กับ B ทะเลาะเรื่องทรัพย์สิน"],
+  ["เหตุจากความแค้น","A โกรธ B จากเหตุการณ์ก่อนหน้า"],
+  ["กลับไปเอาอาวุธ","หลังทะเลาะ A กลับไปนำอาวุธมา"],
+  ["รอคู่กรณี","A รอ B อยู่บริเวณหน้าบ้าน"],
+  ["ลงมือเพียงครั้งเดียว","A ทำร้าย B เพียงครั้งเดียวแล้วหยุด"],
+  ["ทำร้ายแล้วเรียกคนช่วย","A ทำร้าย B ก่อนเรียกคนอื่นมาช่วย"],
+  ["มีคนห้ามเหตุ","บุคคลที่สามเข้าห้ามการต่อสู้"],
+  ["การกระทำต่อเนื่อง","A และ B มีเหตุโต้เถียงก่อนเกิดการทำร้าย"],
+  ["เหตุในเวลากลางคืน","เกิดการทำร้ายกันช่วงกลางคืน"],
+  ["เหตุจากการป้องกันทรัพย์","A พบ B กำลังทำลายทรัพย์และเกิดการต่อสู้"],
+  ["เหตุจากการป้องกันบุคคลอื่น","A เห็น B กำลังทำร้าย C จึงเข้าไปช่วย"]
+ ],
+
+ civil:[
+  ["ซื้อขายสินค้าแล้วไม่ชำระเงิน","A ซื้อสินค้าจาก B แต่ไม่ชำระราคาตามกำหนด"],
+  ["ผิดสัญญา","คู่สัญญาฝ่ายหนึ่งไม่ปฏิบัติตามข้อตกลง"],
+  ["มัดจำ","ผู้ซื้อวางมัดจำแล้วเกิดข้อพิพาท"],
+  ["กู้ยืมเงิน","A ให้ B ยืมเงินและถึงกำหนดแล้วไม่คืน"],
+  ["เช่าบ้าน","ผู้เช่าค้างค่าเช่า"],
+  ["เช่าซื้อ","คู่สัญญามีข้อพิพาทเกี่ยวกับการผ่อนชำระ"],
+  ["ละเมิด","A กระทำการทำให้ทรัพย์สินของ B เสียหาย"],
+  ["ค่าสินไหม","B เรียกค่าเสียหายจากการกระทำของ A"],
+  ["หนี้","ลูกหนี้ไม่ชำระหนี้เมื่อถึงกำหนด"],
+  ["ผิดนัด","คู่สัญญาส่งมอบทรัพย์ล่าช้า"],
+  ["สัญญาจ้างทำของ","ผู้รับจ้างทำงานไม่ตรงตามข้อตกลง"],
+  ["สัญญาจ้างแรงงาน","เกิดข้อพิพาทเกี่ยวกับข้อตกลงการทำงาน"],
+  ["ค้ำประกัน","เจ้าหนี้เรียกร้องจากผู้ค้ำประกัน"],
+  ["จำนอง","เจ้าหนี้ใช้สิทธิตามสัญญาจำนอง"],
+  ["จำนำ","เกิดข้อพิพาทเกี่ยวกับทรัพย์ที่นำมาจำนำ"],
+  ["กรรมสิทธิ์","สองฝ่ายโต้แย้งว่าใครเป็นเจ้าของทรัพย์"],
+  ["ครอบครอง","A ครอบครองที่ดินและ B อ้างสิทธิ"],
+  ["ทรัพย์สินเสียหาย","A ทำให้ทรัพย์ของ B เสียหาย"],
+  ["เรียกค่าเสียหาย","ผู้เสียหายต้องการเรียกค่าเสียหาย"],
+  ["บอกเลิกสัญญา","คู่สัญญาฝ่ายหนึ่งต้องการเลิกสัญญา"],
+  ["คืนทรัพย์","ฝ่ายหนึ่งเรียกทรัพย์คืน"],
+  ["ชำระหนี้แทน","บุคคลหนึ่งชำระหนี้แทนอีกฝ่าย"],
+  ["สัญญาปากเปล่า","คู่สัญญาตกลงกันโดยไม่มีเอกสาร"],
+  ["หลักฐานการชำระเงิน","คู่กรณีมีหลักฐานการโอนเงินต่างกัน"],
+  ["หนี้หลายราย","ลูกหนี้มีเจ้าหนี้หลายราย"],
+  ["ทรัพย์ร่วม","หลายคนอ้างสิทธิในทรัพย์เดียวกัน"],
+  ["สัญญาซื้อขายออนไลน์","ซื้อสินค้าออนไลน์แล้วเกิดข้อพิพาท"],
+  ["การส่งมอบสินค้า","ผู้ขายส่งสินค้าไม่ตรงตามสัญญา"],
+  ["เงินโอนผิดบัญชี","A โอนเงินผิดและต้องการเรียกคืน"],
+  ["ค่าเสียหายจากบริการ","ผู้ใช้บริการอ้างว่าได้รับความเสียหาย"]
+ ],
+
+ labor:[
+  ["นายจ้างเลิกจ้าง","ลูกจ้างถูกเลิกจ้างและโต้แย้งสิทธิ"],
+  ["ค่าจ้างค้างจ่าย","นายจ้างค้างค่าจ้าง"],
+  ["ทำงานล่วงเวลา","ลูกจ้างทำงานเกินเวลาปกติ"],
+  ["วันหยุด","เกิดข้อพิพาทเกี่ยวกับวันหยุด"],
+  ["วันลา","ลูกจ้างใช้สิทธิลาแล้วเกิดข้อโต้แย้ง"],
+  ["เลิกจ้างกะทันหัน","นายจ้างแจ้งเลิกจ้างโดยมีข้อพิพาท"],
+  ["ค่าชดเชย","ลูกจ้างเรียกร้องค่าชดเชย"],
+  ["สัญญาจ้าง","ข้อกำหนดในสัญญาจ้างมีปัญหา"],
+  ["ทดลองงาน","ลูกจ้างถูกเลิกจ้างระหว่างทดลองงาน"],
+  ["ย้ายสถานที่ทำงาน","นายจ้างสั่งย้ายสถานที่ทำงาน"],
+  ["ลดค่าจ้าง","นายจ้างประกาศลดค่าจ้าง"],
+  ["หักค่าจ้าง","มีการหักเงินจากค่าจ้าง"],
+  ["วินัยพนักงาน","ลูกจ้างถูกลงโทษทางวินัย"],
+  ["ลาออก","ลูกจ้างลาออกและมีข้อพิพาท"],
+  ["เกษียณ","เกิดข้อพิพาทเกี่ยวกับการเกษียณ"],
+  ["โบนัส","ลูกจ้างเรียกร้องโบนัส"],
+  ["สวัสดิการ","ข้อพิพาทเกี่ยวกับสวัสดิการ"],
+  ["อุบัติเหตุจากงาน","ลูกจ้างได้รับบาดเจ็บจากการทำงาน"],
+  ["ทำงานในวันหยุด","นายจ้างให้ทำงานในวันหยุด"],
+  ["เวลาพัก","ข้อพิพาทเกี่ยวกับเวลาพัก"],
+  ["วันหยุดประจำสัปดาห์","ลูกจ้างไม่ได้รับวันหยุดตามที่อ้าง"],
+  ["การเลือกปฏิบัติ","ลูกจ้างอ้างว่าได้รับการปฏิบัติไม่เท่าเทียม"],
+  ["การเปลี่ยนหน้าที่","นายจ้างเปลี่ยนหน้าที่ลูกจ้าง"],
+  ["การประเมินงาน","ลูกจ้างโต้แย้งผลการประเมิน"],
+  ["หนังสือเตือน","นายจ้างออกหนังสือเตือน"],
+  ["การกระทำผิดซ้ำ","ลูกจ้างถูกกล่าวหาว่าฝ่าฝืนซ้ำ"],
+  ["พนักงานชั่วคราว","เกิดข้อพิพาทเรื่องสถานะการจ้าง"],
+  ["การจ้างเหมาบริการ","เกิดปัญหาว่าความสัมพันธ์เป็นการจ้างแบบใด"],
+  ["ลาโดยไม่ได้รับอนุญาต","ลูกจ้างขาดงานและเกิดข้อพิพาท"],
+  ["การเลิกจ้างไม่เป็นธรรม","ลูกจ้างอ้างว่าการเลิกจ้างไม่เป็นธรรม"]
+ ]
+};
+
+
+/* หมวดอื่นใช้หัวข้อสำหรับสร้างสถานการณ์ฝึก */
+const OTHER_TOPICS = {
+ civilproc:["ฟ้องผิดศาล","กำหนดเวลายื่นคำให้การ","การส่งหมาย","การขาดนัด","การถอนฟ้อง","การเรียกพยาน","การอุทธรณ์","การฎีกา","การขอคุ้มครองชั่วคราว","การบังคับคดี"],
+ criminalproc:["การจับ","การค้น","การควบคุมตัว","การสอบสวน","การฝากขัง","การประกันตัว","การฟ้องคดี","พยานหลักฐาน","การอุทธรณ์","การฎีกา"],
+ land:["แนวเขตที่ดิน","โฉนด","การครอบครอง","ทางจำเป็น","ภาระจำยอม","การรังวัด","การออกเอกสารสิทธิ","ที่สาธารณะ","ซื้อขายที่ดิน","ข้อพิพาทเขตที่ดิน"],
+ computer:["โพสต์ข้อความ","นำเข้าข้อมูล","บัญชีปลอม","หลอกลวงออนไลน์","ข้อมูลเท็จ","แฮ็กบัญชี","ส่งต่อข้อมูล","เผยแพร่ภาพ","ข้อมูลส่วนบุคคล","แพลตฟอร์มออนไลน์"],
+ tax:["ภาษีเงินได้","ภาษีมูลค่าเพิ่ม","ภาษีหัก ณ ที่จ่าย","ภาษีที่ดิน","การประเมินภาษี","การอุทธรณ์ภาษี","ภาษีธุรกิจเฉพาะ","ภาษีมรดก","การยื่นแบบ","ภาษีค้าง"],
+ family:["การสมรส","การหย่า","สินสมรส","สินส่วนตัว","อำนาจปกครองบุตร","ค่าอุปการะเลี้ยงดู","บุตรนอกสมรส","การรับบุตรบุญธรรม","มรดกของคู่สมรส","สิทธิของบุตร"],
+ bankruptcy:["หนี้สิน","เจ้าหนี้","ลูกหนี้","พิทักษ์ทรัพย์","ล้มละลาย","ฟื้นฟูกิจการ","การชำระหนี้","เจ้าหนี้มีประกัน","ทรัพย์สินลูกหนี้","การปลดจากล้มละลาย"],
+ ip:["ลิขสิทธิ์","เครื่องหมายการค้า","สิทธิบัตร","งานสร้างสรรค์","การละเมิดลิขสิทธิ์","เครื่องหมายคล้าย","สิทธิของเจ้าของ","การนำภาพไปใช้","โปรแกรมคอมพิวเตอร์","การขายสินค้าละเมิด"],
+ consumer:["สินค้าชำรุด","โฆษณา","สัญญาผู้บริโภค","ซื้อสินค้าออนไลน์","บริการไม่ได้มาตรฐาน","คืนสินค้า","เรียกค่าเสียหาย","สินค้าปลอม","ข้อมูลสินค้า","การรับประกัน"],
+ admin:["คำสั่งทางปกครอง","ใบอนุญาต","เจ้าหน้าที่รัฐ","การใช้อำนาจ","การเพิกถอนคำสั่ง","ความรับผิดของรัฐ","การฟ้องศาลปกครอง","สัญญาทางปกครอง","ละเลยต่อหน้าที่","คำสั่งไม่ชอบ"],
+ drug:["ครอบครอง","เสพ","จำหน่าย","ผลิต","นำเข้า","ส่งออก","ร่วมกระทำ","พยายาม","ของกลาง","การตรวจค้น"],
+ constitution:["สิทธิและเสรีภาพ","เสมอภาค","เสรีภาพการแสดงความคิดเห็น","สิทธิชุมชน","หน้าที่ของรัฐ","องค์กรอิสระ","อำนาจรัฐสภา","ศาล","การตรวจสอบอำนาจรัฐ","การใช้สิทธิ"],
+ election:["คุณสมบัติผู้สมัคร","ลักษณะต้องห้าม","การหาเสียง","การซื้อเสียง","การนับคะแนน","บัตรเลือกตั้ง","การร้องคัดค้าน","สมาชิกสภา","การเลือกตั้งท้องถิ่น","การเลือกตั้งระดับชาติ"],
+ corruption:["เจ้าหน้าที่รัฐ","รับทรัพย์สิน","ใช้อำนาจโดยมิชอบ","เอื้อประโยชน์","จัดซื้อจัดจ้าง","ผลประโยชน์ทับซ้อน","ร่ำรวยผิดปกติ","ปฏิบัติหน้าที่โดยมิชอบ","ทุจริต","การตรวจสอบ"]
+};
+
+
+/* -------------------------
+   สร้าง 30 เหตุการณ์จำลอง
+------------------------- */
+
+function buildSimulated(){
+ let all=[];
+
+ CATEGORIES.forEach(cat=>{
+   let source=SIM_TEMPLATES[cat.id] || OTHER_TOPICS[cat.id] || [];
+
+   for(let i=0;i<30;i++){
+     let item=source[i % source.length];
+
+     let title;
+     let story;
+
+     if(Array.isArray(item)){
+       title=item[0];
+       story=item[1];
+     }else{
+       title=item;
+       story=`สถานการณ์ฝึกวิเคราะห์เกี่ยวกับ “${item}” โดยสมมติให้คู่กรณี A และ B มีข้อพิพาทเกิดขึ้น ผู้เรียนต้องวิเคราะห์ข้อเท็จจริงและกฎหมายที่เกี่ยวข้อง`;
+     }
+
+     all.push({
+       id:`sim-${cat.id}-${i+1}`,
+       category:cat.id,
+       type:"จำลอง",
+       no:i+1,
+       title:title,
+       story:story,
+       difficulty:["ง่าย","ปานกลาง","ยาก","ระดับสอบ"][i%4],
+       articles:cat.id==="criminal"
+          ? [["288","289","290","291","294"][i%5]]
+          : [],
+       analysis:[
+         "แยกข้อเท็จจริงที่สำคัญออกจากข้อเท็จจริงทั่วไป",
+         "พิจารณาว่าการกระทำเข้าองค์ประกอบของกฎหมายหรือไม่",
+         "พิจารณาข้อยกเว้นหรือเหตุยกเว้นความผิด",
+         "ตรวจสอบมาตราที่เกี่ยวข้องก่อนสรุป"
+       ]
+     });
+   }
+ });
+
+ return all;
+}
+
+const SIMULATED=buildSimulated();
+
+
+/* -------------------------
+   ข่าว/เหตุการณ์จริง
+   เก็บเฉพาะข้อมูลที่มีแหล่งอ้างอิง
+------------------------- */
+
+const REAL_NEWS=[
+
+ {
+   id:"news-001",
+   category:"criminal",
+   title:"คำพิพากษาฎีกาที่ 988/2568",
+   date:"พ.ศ. 2568",
+   source:"ThaiDeka",
+   sourceUrl:"https://deka.in.th/deka/2568-988",
+   summary:"คำพิพากษาฎีกาที่มีประเด็นเกี่ยวกับเจตนาฆ่าและข้ออ้างเรื่องการขาดสติ รวมถึงประเด็นการฆ่าโดยไตร่ตรองไว้ก่อน",
+   articles:["289"]
+ },
+
+ {
+   id:"news-002",
+   category:"criminal",
+   title:"คำพิพากษาฎีกาที่ 7400/2568",
+   date:"พ.ศ. 2568",
+   source:"ThaiDeka",
+   sourceUrl:"https://deka.in.th/deka/2568-7400",
+   summary:"คดีมีประเด็นเรื่องการป้องกันตนเองจากภยันตรายที่ใกล้จะถึง และการพิจารณาพฤติการณ์ในขณะเกิดเหตุ",
+   articles:["288"]
+ },
+
+ {
+   id:"news-003",
+   category:"criminal",
+   title:"คำพิพากษาฎีกาที่ 5729/2556",
+   date:"พ.ศ. 2556",
+   source:"ThaiDeka",
+   sourceUrl:"https://deka.in.th/deka/2556-5729",
+   summary:"แนวคำพิพากษาที่อธิบายองค์ประกอบภายนอกของความผิดฐานฆ่าผู้อื่น และประเด็นเรื่องความรู้ข้อเท็จจริงของผู้กระทำ",
+   articles:["288"]
+ },
+
+ {
+   id:"news-004",
+   category:"labor",
+   title:"คำพิพากษาฎีกาด้านกฎหมายแรงงาน",
+   date:"ฐานข้อมูลคำพิพากษา",
+   source:"ThaiDeka",
+   sourceUrl:"https://deka.in.th/deka?categories%5B0%5D=labor-law&type=judgment",
+   summary:"หน้าแหล่งข้อมูลรวมคำพิพากษาฎีกาหมวดกฎหมายแรงงาน สามารถนำมาใช้ศึกษาแนวทางเกี่ยวกับสิทธิของลูกจ้างและข้อพิพาทแรงงาน",
+   articles:[]
+ },
+
+ {
+   id:"news-005",
+   category:"land",
+   title:"แนวคำพิพากษาฎีกาด้านกฎหมายที่ดิน",
+   date:"ฐานข้อมูลคำพิพากษา",
+   source:"ThaiDeka",
+   sourceUrl:"https://deka.in.th/deka?categories%5B0%5D=land-law",
+   summary:"รวมคำพิพากษาฎีกาด้านกฎหมายที่ดิน ใช้ศึกษาประเด็นกรรมสิทธิ์ การครอบครอง และข้อพิพาทเกี่ยวกับที่ดิน",
+   articles:[]
+ },
+
+ {
+   id:"news-006",
+   category:"computer",
+   title:"คำพิพากษาฎีกาด้านอาชญากรรมทางคอมพิวเตอร์",
+   date:"ฐานข้อมูลคำพิพากษา",
+   source:"ThaiDeka",
+   sourceUrl:"https://deka.in.th/deka?categories%5B0%5D=cyber-law&type=judgment",
+   summary:"รวมแนวคำพิพากษาที่เกี่ยวข้องกับกฎหมายคอมพิวเตอร์ เหมาะสำหรับศึกษาความแตกต่างระหว่างข้อเท็จจริงในโลกออนไลน์กับองค์ประกอบความผิด",
+   articles:[]
+ },
+
+ {
+   id:"news-007",
+   category:"civil",
+   title:"แนวคำพิพากษาฎีกาด้านกฎหมายแพ่ง",
+   date:"ฐานข้อมูลคำพิพากษา",
+   source:"ThaiDeka",
+   sourceUrl:"https://deka.in.th/deka?categories%5B0%5D=civil-law&type=judgment",
+   summary:"รวมคำพิพากษาฎีกาด้านกฎหมายแพ่ง ครอบคลุมหนี้ สัญญา ละเมิด ทรัพย์ และประเด็นทางแพ่งจำนวนมาก",
+   articles:[]
+ }
+
+];
+
+
+/* -------------------------
+   STATE
+------------------------- */
+
+let state={
+ page:"home",
+ category:null,
+ eventType:"all",
+ search:"",
+ currentArticle:null,
+ currentEvent:null,
+ quiz:null,
+ quizIndex:0,
+ score:0
+};
+
+
+/* -------------------------
+   HOME
+------------------------- */
+
+function renderHome(){
+
+ state.page="home";
+
+ document.getElementById("app").innerHTML=`
+
+ <section class="hero">
+   <h1>LAWSTUDY</h1>
+   <p>
+     เรียนกฎหมายจาก
+     <b>ตัวบท → เหตุการณ์ → วิเคราะห์ → ฎีกา → แบบทดสอบ</b>
+   </p>
+
+   <div class="stats">
+     <div class="stat">
+       <b>17+</b>
+       <span>หมวดกฎหมาย</span>
+     </div>
+     <div class="stat">
+       <b>30×</b>
+       <span>สถานการณ์จำลอง / หมวด</span>
+     </div>
+     <div class="stat">
+       <b>75%</b>
+       <span>ข้อเขียน</span>
+     </div>
+     <div class="stat">
+       <b>25%</b>
+       <span>ตัวเลือก</span>
+     </div>
+   </div>
+ </section>
+
+ <div class="section-title">
+   <h2>📚 คลังเรียนกฎหมาย</h2>
+ </div>
+
+ <input
+   class="search"
+   placeholder="🔎 ค้นหาหมวดกฎหมาย..."
+   oninput="searchCategories(this.value)"
+ >
+
+ <div class="grid" id="categoryGrid">
+   ${categoryCards()}
+ </div>
+
+ <div class="section-title">
+   <h2>🎯 เรียนแบบไหน?</h2>
+ </div>
+
+ <div class="grid">
+
+   <div class="card">
+     <div style="font-size:35px">📖</div>
+     <h3>อ่านมาตรา</h3>
+     <p class="small">
+       อ่านหลักกฎหมาย พร้อมเหตุการณ์และแนวฎีกาที่เกี่ยวข้อง
+     </p>
+     <button class="btn" onclick="openCategory('criminal')">
+       เริ่มอ่าน
+     </button>
+   </div>
+
+   <div class="card">
+     <div style="font-size:35px">🎬</div>
+     <h3>วิเคราะห์เหตุการณ์</h3>
+     <p class="small">
+       มีสถานการณ์จำลองจำนวนมากให้ลองวิเคราะห์
+     </p>
+     <button class="btn" onclick="openCategory('criminal','events')">
+       ดูเหตุการณ์
+     </button>
+   </div>
+
+   <div class="card">
+     <div style="font-size:35px">🧠</div>
+     <h3>ทำแบบทดสอบ</h3>
+     <p class="small">
+       ข้อสอบสถานการณ์ 75% เขียนตอบ + 25% ตัวเลือก
+     </p>
+     <button class="btn" onclick="startQuiz('criminal')">
+       เริ่มทำข้อสอบ
+     </button>
+   </div>
+
+   <div class="card">
+     <div style="font-size:35px">⚖️</div>
+     <h3>ค้นฎีกา</h3>
+     <p class="small">
+       เชื่อมโยงฎีกาตามมาตราโดยไม่สร้างเลขฎีกาเอง
+     </p>
+     <button class="btn" onclick="openArticle('288')">
+       ดู ม.288
+     </button>
+   </div>
+
+ </div>
+
+ <div class="footer">
+   LAWSTUDY — ระบบเพื่อการศึกษา<br>
+   ตัวบท: สถาบันนิติธรรมาลัย · ฎีกา: ThaiDeka · ข่าว: แหล่งข่าวต้นทาง
+ </div>
+ `;
+
+}
+
+
+/* -------------------------
+   CATEGORY CARDS
+------------------------- */
+
+function categoryCards(filter=""){
+
+ return CATEGORIES
+ .filter(c=>
+   !filter ||
+   c.name.toLowerCase().includes(filter.toLowerCase())
+ )
+ .map(c=>`
+
+ <div class="card category" onclick="openCategory('${c.id}')">
+   <div class="category-icon">${c.icon}</div>
+   <h3>${c.name}</h3>
+   <div class="small">${c.desc}</div>
+   <br>
+
+   <div class="badges">
+     <span class="badge sim">
+       🧪 จำลอง 30
+     </span>
+
+     <span class="badge real">
+       📰 ข่าว/จริง
+       ${REAL_NEWS.filter(x=>x.category===c.id).length}
+     </span>
+   </div>
+
+   <button class="btn light">
+     เปิดหมวด →
+   </button>
+ </div>
+
+ `).join("");
+}
+
+function searchCategories(v){
+ document.getElementById("categoryGrid").innerHTML=categoryCards(v);
+}
+
+
+/* -------------------------
+   OPEN CATEGORY
+------------------------- */
+
+function openCategory(id,mode="all"){
+
+ state.category=id;
+ state.eventType=mode;
+ state.search="";
+ state.page="category";
+
+ renderCategory();
+}
+
+function renderCategory(){
+
+ const cat=CATEGORIES.find(x=>x.id===state.category);
+
+ let simulated=SIMULATED.filter(x=>x.category===state.category);
+
+ let real=REAL_NEWS.filter(x=>x.category===state.category);
+
+ let list=[];
+
+ if(state.eventType==="sim") list=simulated;
+ else if(state.eventType==="real") list=real;
+ else list=[...simulated,...real];
+
+ document.getElementById("app").innerHTML=`
+
+ <div class="section-title">
+   <h2>
+     ${cat.icon} ${cat.name}
+   </h2>
+
+   <button class="btn light" onclick="goHome()">
+     ← กลับ
+   </button>
+ </div>
+
+ <div class="card">
+
+   <input
+     class="search"
+     placeholder="🔎 ค้นหาเหตุการณ์..."
+     value="${state.search}"
+     oninput="filterEvents(this.value)"
+   >
+
+   <div class="tabs">
+     <button class="tab ${state.eventType==="all"?"active":""}"
+       onclick="setEventType('all')">
+       ทั้งหมด
+     </button>
+
+     <button class="tab ${state.eventType==="sim"?"active":""}"
+       onclick="setEventType('sim')">
+       🧪 จำลอง 30
+     </button>
+
+     <button class="tab ${state.eventType==="real"?"active":""}"
+       onclick="setEventType('real')">
+       📰 เหตุการณ์จริง
+     </button>
+
+     <button class="tab"
+       onclick="startQuiz('${state.category}')">
+       🧠 ทำข้อสอบ
+     </button>
+   </div>
+
+   <div id="eventList">
+     ${eventList(list)}
+   </div>
+
+ </div>
+ `;
+
+}
+
+function eventList(list){
+
+ if(!list.length)
+   return `<div class="empty">ยังไม่มีข้อมูลในหมวดนี้</div>`;
+
+ return list.map(x=>{
+
+   let isReal=x.type!=="จำลอง";
+
+   return `
+
+   <div class="event-card">
+
+     <div class="badges">
+
+       <span class="badge ${isReal?"real":"sim"}">
+         ${isReal?"📰 เหตุการณ์จริง":"🧪 สถานการณ์จำลอง"}
+       </span>
+
+       ${
+         x.difficulty
+         ? `<span class="badge">ระดับ ${x.difficulty}</span>`
+         :""
+       }
+
+       ${
+         x.articles?.length
+         ? `<span class="badge law">
+              ม.${x.articles.join(" / ม.")}
+            </span>`
+         :""
+       }
+
+     </div>
+
+     <div class="event-title">
+       ${x.title}
+     </div>
+
+     <div class="event-story">
+       ${x.story || x.summary}
+     </div>
+
+     ${
+       isReal
+       ? `<div class="small">
+           📌 แหล่งข้อมูล: <b>${x.source}</b>
+           ${x.date?` · ${x.date}`:""}
+          </div>`
+       :""
+     }
+
+     <br>
+
+     <button class="btn"
+       onclick="openEvent('${x.id}')">
+       อ่านเหตุการณ์ →
+     </button>
+
+   </div>
+   `;
+ }).join("");
+}
+
+function setEventType(type){
+ state.eventType=type;
+ renderCategory();
+}
+
+function filterEvents(v){
+
+ state.search=v.toLowerCase();
+
+ let sim=SIMULATED.filter(x=>
+   x.category===state.category &&
+   (x.title+x.story).toLowerCase().includes(state.search)
+ );
+
+ let real=REAL_NEWS.filter(x=>
+   x.category===state.category &&
+   (x.title+x.summary+x.source).toLowerCase().includes(state.search)
+ );
+
+ let list=
+   state.eventType==="sim"?sim:
+   state.eventType==="real"?real:
+   [...sim,...real];
+
+ document.getElementById("eventList").innerHTML=eventList(list);
+}
+
+
+/* -------------------------
+   EVENT READER
+------------------------- */
+
+function openEvent(id){
+
+ let event=
+   SIMULATED.find(x=>x.id===id) ||
+   REAL_NEWS.find(x=>x.id===id);
+
+ if(!event)return;
+
+ let isReal=event.type!=="จำลอง";
+
+ let articles=event.articles || [];
+
+ openModal(`
+
+ <button class="close" onclick="closeModal()">×</button>
+
+ <div class="badges">
+
+   <span class="badge ${isReal?"real":"sim"}">
+     ${isReal?"📰 เหตุการณ์จริง":"🧪 สถานการณ์จำลอง"}
+   </span>
+
+   ${event.difficulty?
+      `<span class="badge">ระดับ ${event.difficulty}</span>`:""}
+
+ </div>
+
+ <h2>${event.title}</h2>
+
+ <div class="article-box">
+   ${event.story || event.summary}
+ </div>
+
+ ${
+   isReal
+   ? `
+     <div class="source">
+       <b>📰 แหล่งข้อมูล</b><br>
+       ${event.source}<br>
+       ${event.date||""}
+
+       <p>
+         ${event.summary}
+       </p>
+
+       <div class="small">
+         เครดิตแหล่งข้อมูล:
+         ${event.source}
+       </div>
+     </div>
+   `
+   : `
+     <div class="warning">
+       🧪 <b>สถานการณ์จำลอง</b><br>
+       เหตุการณ์นี้สร้างขึ้นเพื่อการเรียนรู้
+       ไม่ใช่คดีจริงและไม่ควรนำไปอ้างว่าเป็นข้อเท็จจริงของคดีใด
+     </div>
+   `
+ }
+
+ <h3>⚖️ วิเคราะห์เบื้องต้น</h3>
+
+ <div class="article-box">
+   ${
+     (event.analysis||[
+       "แยกข้อเท็จจริง",
+       "ค้นหามาตราที่เกี่ยวข้อง",
+       "พิจารณาองค์ประกอบความผิด",
+       "พิจารณาข้อยกเว้น"
+     ]).map((x,i)=>`
+       <p><b>${i+1}.</b> ${x}</p>
+     `).join("")
+   }
+ </div>
+
+ ${
+   articles.length
+   ? `
+   <h3>📖 มาตราที่เกี่ยวข้อง</h3>
+
+   ${articles.map(a=>`
+     <button
+       class="btn full"
+       style="margin-bottom:8px"
+       onclick="openArticle('${a}')">
+       ดูมาตรา ${a} →
+     </button>
+   `).join("")}
+   `
+   :""
+ }
+
+ ${
+   isReal
+   ? `
+   <br>
+   <button
+     class="btn light full"
+     onclick="window.open('${event.sourceUrl}','_blank')">
+     🔗 ดูต้นฉบับจาก ${event.source}
+   </button>
+   `
+   :""
+ }
+
+ <br>
+
+ <button
+   class="btn green full"
+   onclick="closeModal();startQuiz('${event.category}')">
+   🧠 ทำข้อสอบจากเหตุการณ์นี้
+ </button>
+
+ `);
+}
+
+
+/* -------------------------
+   ARTICLE READER
+------------------------- */
+
+function openArticle(no){
+
+ const article=ARTICLES[no];
+
+ if(!article){
+   openModal(`
+    <button class="close" onclick="closeModal()">×</button>
+    <h2>ยังไม่มีบทสรุปมาตรา ${no}</h2>
+    <p>
+      สามารถเพิ่มข้อมูลมาตรานี้ได้ภายหลัง
+      โดยระบบจะไม่สร้างตัวบทขึ้นเอง
+    </p>
+   `);
+   return;
+ }
+
+ state.currentArticle=no;
+
+ const cases=DEKA[no]||[];
+
+ const events=SIMULATED.filter(x=>
+   x.articles?.includes(no)
+ );
+
+ openModal(`
+
+ <button class="close" onclick="closeModal()">×</button>
+
+ <div class="reader">
+
+   <div class="badges">
+     <span class="badge law">ประมวลกฎหมายอาญา</span>
+     <span class="badge">มาตรา ${no}</span>
+   </div>
+
+   <h1>มาตรา ${no}</h1>
+
+   <h2>${article.title}</h2>
+
+   <div class="article-box">
+     <b>📖 สรุปหลักกฎหมาย</b>
+     <p>${article.summary}</p>
+   </div>
+
+   <h3>⚖️ องค์ประกอบที่ควรพิจารณา</h3>
+
+   <div class="article-box">
+     ${article.elements.map((x,i)=>`
+       <p>
+         <b>${i+1}.</b> ${x}
+       </p>
+     `).join("")}
+   </div>
+
+   <div class="source">
+     <b>📚 แหล่งตัวบท</b><br>
+     ${article.source}<br>
+     <span class="small">
+       LAWSTUDY เรียบเรียงเพื่อการศึกษา
+     </span>
+   </div>
+
+
+   <hr style="margin:25px 0">
+
+
+   <h2>🧪 เหตุการณ์จำลอง</h2>
+
+   ${
+     events.length
+     ? events.slice(0,10).map(e=>`
+       <div class="event-card">
+         <b>${e.title}</b>
+         <p class="small">${e.story}</p>
+         <button
+           class="btn light"
+           onclick="openEvent('${e.id}')">
+           อ่านเหตุการณ์
+         </button>
+       </div>
+     `).join("")
+     :
+     `<div class="empty">
+       ยังไม่มีเหตุการณ์ที่ผูกกับมาตรานี้โดยตรง
+     </div>`
+   }
+
+
+   <hr style="margin:25px 0">
+
+
+   <h2>⚖️ ฎีกาที่เกี่ยวข้อง</h2>
+
+   <div class="article-box">
+
+     <b>ค้นฎีกาที่อ้างถึงมาตรา ${no}</b>
+
+     <p class="small">
+       LAWSTUDY จะแสดงเฉพาะเลขฎีกา
+       และสรุปที่ตรวจสอบแหล่งข้อมูลได้
+       ไม่สร้างเลขฎีกาขึ้นเอง
+     </p>
+
+     <button
+       class="btn"
+       onclick="showDeka('${no}')">
+       🔎 ดูฎีกาใน LAWSTUDY
+     </button>
+
+   </div>
+
+   ${
+     cases.length
+     ? cases.map(c=>`
+
+       <div class="case">
+
+         <strong>
+           ฎีกาที่ ${c.no}
+         </strong>
+
+         <div class="small">
+           ${c.title}
+         </div>
+
+         <div class="case-summary">
+           ${c.summary}
+         </div>
+
+         <button
+           class="btn light"
+           onclick="openDekaInside('${c.no}','${c.summary}')">
+           อ่านสรุปฎีกา
+         </button>
+
+       </div>
+
+     `).join("")
+     :
+     `<div class="empty">
+       ยังไม่มีเลขฎีกาที่ตรวจสอบแล้วในคลัง LAWSTUDY
+     </div>`
+   }
+
+   <br>
+
+   <button
+     class="btn full"
+     onclick="openDekaSearch('${no}')">
+     🔎 ค้นฎีกาที่อ้างถึงมาตรา ${no}
+   </button>
+
+
+   <hr style="margin:25px 0">
+
+
+   <h2>🧠 แบบทดสอบจากมาตรานี้</h2>
+
+   <button
+     class="btn green full"
+     onclick="closeModal();startQuiz('criminal','${no}')">
+     เริ่มทำข้อสอบ
+   </button>
+
+ </div>
+
+ `);
+}
+
+
+/* -------------------------
+   DEKA INSIDE
+------------------------- */
+
+function showDeka(no){
+
+ const cases=DEKA[no]||[];
+
+ openModal(`
+
+ <button class="close" onclick="closeModal()">×</button>
+
+ <h2>⚖️ ฎีกาที่เกี่ยวข้องกับมาตรา ${no}</h2>
+
+ <p class="small">
+   แสดงเฉพาะข้อมูลฎีกาที่ LAWSTUDY มีข้อมูลตรวจสอบได้
+ </p>
+
+ ${
+   cases.length
+   ? cases.map(c=>`
+      <div class="case">
+        <strong>ฎีกาที่ ${c.no}</strong>
+        <h4>${c.title}</h4>
+        <div class="case-summary">
+          ${c.summary}
+        </div>
+        <div class="source">
+          ที่มา: ThaiDeka
+        </div>
+      </div>
+   `).join("")
+   :
+   `
+   <div class="warning">
+     ⚠️ ขณะนี้ยังไม่มีรายละเอียดฎีกาที่ตรวจสอบแล้ว
+     ในคลังข้อมูล LAWSTUDY
+   </div>
+   `
+ }
+
+ <br>
+
+ <button
+   class="btn full"
+   onclick="openDekaSearch('${no}')">
+   🔎 เปิดผลค้นหาฎีกามาตรา ${no}
+ </button>
+
+ `);
+}
+
+
+/* -------------------------
+   DEKA READER
+------------------------- */
+
+function openDekaInside(no,summary){
+
+ openModal(`
+
+ <button class="close" onclick="closeModal()">×</button>
+
+ <div class="reader">
+
+   <div class="badges">
+     <span class="badge law">⚖️ คำพิพากษาฎีกา</span>
+     <span class="badge">ThaiDeka</span>
+   </div>
+
+   <h1>ฎีกาที่ ${no}</h1>
+
+   <h3>📌 สรุปสำหรับการเรียน</h3>
+
+   <div class="article-box">
+     ${summary}
+   </div>
+
+   <div class="warning">
+     LAWSTUDY แสดง “สรุปเพื่อการศึกษา”
+     ไม่ใช่การคัดลอกคำพิพากษาฉบับเต็ม
+   </div>
+
+   <br>
+
+   <button
+     class="btn light full"
+     onclick="openDekaSearch('${state.currentArticle||288}')">
+     🔎 ค้นฎีกาเพิ่มเติม
+   </button>
+
+ </div>
+
+ `);
+}
+
+function openDekaSearch(no){
+
+ const url=dekaSearch(no);
+
+ /*
+  ไม่เปลี่ยนหน้า LAWSTUDY
+  เปิดหน้าค้นหาเป็นชั้นข้อมูลภายใน
+  พร้อมปุ่มต้นฉบับ
+ */
+
+ openModal(`
+
+ <button class="close" onclick="closeModal()">×</button>
+
+ <h2>🔎 ฎีกามาตรา ${no}</h2>
+
+ <div class="article-box">
+
+   <p>
+     LAWSTUDY ไม่สร้างเลขฎีกาเอง
+     และใช้ ThaiDeka เป็นแหล่งอ้างอิง
+   </p>
+
+   <p>
+     ระบบจะแสดงเฉพาะฎีกาที่มีข้อมูลตรวจสอบได้
+     ในฐานข้อมูลของ LAWSTUDY
+   </p>
+
+ </div>
+
+ <div class="source">
+   <b>แหล่งข้อมูล:</b> ThaiDeka
+ </div>
+
+ <button
+   class="btn full"
+   onclick="window.open('${url}','_blank')">
+   🔗 ดูฐานข้อมูลต้นฉบับของ ThaiDeka
+ </button>
+
+ `);
+}
+
+
+/* -------------------------
+   QUIZ
+   75% เขียน / 25% ตัวเลือก
+------------------------- */
+
+const QUIZ=[
+ {
+  category:"criminal",
+  type:"write",
+  article:"288",
+  q:"A เตรียมอาวุธไปหา B หลังจากวางแผนไว้ก่อน แล้วใช้อาวุธทำร้าย B จนเสียชีวิต ให้วิเคราะห์ว่าประเด็นกฎหมายใดที่ต้องพิจารณา",
+  keywords:["เจตนา","ฆ่า","288","289","องค์ประกอบ"]
+ },
+ {
+  category:"criminal",
+  type:"mc",
+  article:"288",
+  q:"ข้อใดเป็นประเด็นสำคัญในการพิจารณาความผิดตามมาตรา 288?",
+  options:[
+   "ผู้เสียหายต้องเป็นเจ้าหน้าที่รัฐ",
+   "มีการฆ่าผู้อื่นและต้องพิจารณาองค์ประกอบของความผิด",
+   "ต้องมีสัญญาระหว่างคู่กรณี",
+   "ต้องเป็นเหตุเกี่ยวกับทรัพย์"
+  ],
+  answer:1
+ },
+ {
+  category:"criminal",
+  type:"write",
+  article:"290",
+  q:"A ทำร้าย B โดยไม่ได้มุ่งหมายให้ B เสียชีวิต แต่ B ถึงแก่ความตาย จงวิเคราะห์ประเด็นสำคัญ",
+  keywords:["ทำร้าย","ไม่มีเจตนาฆ่า","ตาย","290"]
+ },
+ {
+  category:"criminal",
+  type:"write",
+  article:"291",
+  q:"A ขับรถโดยไม่ระมัดระวังและเกิดเหตุจนมีผู้เสียชีวิต ให้วิเคราะห์หลักกฎหมายที่เกี่ยวข้อง",
+  keywords:["ประมาท","ตาย","291"]
+ },
+ {
+  category:"criminal",
+  type:"mc",
+  article:"294",
+  q:"มาตรา 294 เกี่ยวข้องกับเหตุการณ์ประเภทใด?",
+  options:[
+   "การทำสัญญา",
+   "การชุลมุนต่อสู้",
+   "การซื้อขาย",
+   "การหย่า"
+  ],
+  answer:1
+ },
+ {
+  category:"criminal",
+  type:"write",
+  article:"288",
+  q:"A ใช้มีดทำร้าย B เพียงครั้งเดียว แต่ B เสียชีวิต ให้เขียนแนวทางวิเคราะห์โดยไม่สรุปจากผลเพียงอย่างเดียว",
+  keywords:["เจตนา","พฤติการณ์","288","ฆ่า"]
+ },
+ {
+  category:"criminal",
+  type:"write",
+  article:"288",
+  q:"A ถูก B ทำร้ายก่อน A จึงตอบโต้จน B เสียชีวิต ให้พิจารณาประเด็นป้องกันโดยชอบด้วยกฎหมาย",
+  keywords:["ป้องกัน","ภยันตราย","เจตนา","288"]
+ },
+ {
+  category:"criminal",
+  type:"mc",
+  article:"291",
+  q:"ข้อใดเป็นประเด็นหลักของมาตรา 291?",
+  options:[
+   "การทำสัญญา",
+   "การกระทำโดยประมาทเป็นเหตุให้ผู้อื่นถึงแก่ความตาย",
+   "การหย่า",
+   "การครอบครองที่ดิน"
+  ],
+  answer:1
+ }
+];
+
+function startQuiz(category="criminal",article=null){
+
+ let questions=QUIZ.filter(q=>q.category===category);
+
+ if(article)
+   questions=questions.filter(q=>q.article===article);
+
+ if(!questions.length)
+   questions=QUIZ.filter(q=>q.category==="criminal");
+
+ /*
+  คัด 8 ข้อ
+  6 เขียน + 2 ตัวเลือก
+ */
+
+ let writes=questions.filter(q=>q.type==="write");
+ let mcs=questions.filter(q=>q.type==="mc");
+
+ let selected=[
+   ...writes.slice(0,6),
+   ...mcs.slice(0,2)
+ ];
+
+ selected=selected.sort(()=>Math.random()-.5);
+
+ state.quiz=selected;
+ state.quizIndex=0;
+ state.score=0;
+
+ renderQuiz();
+}
+
+function renderQuiz(){
+
+ let q=state.quiz[state.quizIndex];
+
+ if(!q){
+   finishQuiz();
+   return;
+ }
+
+ document.getElementById("app").innerHTML=`
+
+ <div class="section-title">
+
+   <h2>🧠 ห้องสอบ LAWSTUDY</h2>
+
+   <button class="btn light" onclick="goHome()">
+     ออกจากข้อสอบ
+   </button>
+
+ </div>
+
+ <div class="card">
+
+   <div class="badges">
+
+     <span class="badge">
+       ข้อ ${state.quizIndex+1}/${state.quiz.length}
+     </span>
+
+     <span class="badge law">
+       ${
+         q.type==="write"
+         ?"✍️ เขียนตอบ"
+         :"🔘 ตัวเลือก"
+       }
+     </span>
+
+     <span class="badge">
+       ม.${q.article}
+     </span>
+
+   </div>
+
+   <div class="quiz-question">
+     ${q.q}
+   </div>
+
+   ${
+     q.type==="write"
+     ?
+     `
+       <textarea
+         id="answer"
+         placeholder="เขียนแนวทางวิเคราะห์ของคุณ..."
+       ></textarea>
+
+       <button class="btn full"
+         onclick="checkWritten()">
+         ตรวจคำตอบ
+       </button>
+     `
+     :
+     `
+       <div id="options">
+         ${q.options.map((x,i)=>`
+           <button
+             class="option"
+             onclick="chooseOption(${i})">
+             ${String.fromCharCode(65+i)}. ${x}
+           </button>
+         `).join("")}
+       </div>
+     `
+   }
+
+ </div>
+ `;
+
+}
+
+function checkWritten(){
+
+ const q=state.quiz[state.quizIndex];
+
+ const ans=
+   document.getElementById("answer").value
+   .toLowerCase();
+
+ let hits=0;
+
+ q.keywords.forEach(k=>{
+   if(ans.includes(k.toLowerCase())) hits++;
+ });
+
+ let correct=hits>=Math.max(1,Math.ceil(q.keywords.length*.45));
+
+ showQuizResult(correct,q,
+   `ตรวจพบประเด็นสำคัญ ${hits}/${q.keywords.length} จุด`
+ );
+}
+
+function chooseOption(i){
+
+ const q=state.quiz[state.quizIndex];
+
+ const correct=i===q.answer;
+
+ showQuizResult(correct,q,
+   correct
+   ?"เลือกคำตอบถูกต้อง"
+   :"คำตอบยังไม่ถูกต้อง"
+ );
+}
+
+function showQuizResult(correct,q,message){
+
+ if(correct)state.score++;
+
+ document.getElementById("app").innerHTML=`
+
+ <div class="card">
+
+   ${
+     correct
+     ?
+     `<div class="goodbox">
+        ✅ <b>ตอบถูก</b><br>
+        ${message}
+      </div>`
+     :
+     `<div class="warning">
+        ❌ <b>คำตอบยังไม่ถูกต้อง</b><br>
+        ${message}
+      </div>`
+   }
+
+   <h3>📖 กลับไปดูมาตรา ${q.article}</h3>
+
+   <div class="article-box">
+
+     <b>${ARTICLES[q.article]?.title||"มาตราที่เกี่ยวข้อง"}</b>
+
+     <p>
+       ${ARTICLES[q.article]?.summary||
+       "ควรตรวจสอบองค์ประกอบของกฎหมายจากแหล่งตัวบทก่อนสรุปคำตอบ"}
+     </p>
+
+   </div>
+
+   <h3>⚖️ ฎีกาที่เกี่ยวข้อง</h3>
+
+   ${
+     (DEKA[q.article]||[]).map(c=>`
+       <div class="case">
+         <b>ฎีกาที่ ${c.no}</b>
+         <p class="small">${c.summary}</p>
+       </div>
+     `).join("")
+     ||
+     `<div class="empty">
+       ยังไม่มีฎีกาที่ตรวจสอบแล้วในคลังสำหรับข้อนี้
+     </div>`
+   }
+
+   <br>
+
+   <button
+     class="btn"
+     onclick="openArticle('${q.article}')">
+     📖 อ่านมาตรา ${q.article}
+   </button>
+
+   <br><br>
+
+   <button
+     class="btn green"
+     onclick="nextQuiz()">
+     ข้อต่อไป →
+   </button>
+
+ </div>
+
+ `;
+}
+
+function nextQuiz(){
+
+ state.quizIndex++;
+
+ renderQuiz();
+}
+
+function finishQuiz(){
+
+ let percent=
+   Math.round(
+     state.score/state.quiz.length*100
+   );
+
+ document.getElementById("app").innerHTML=`
+
+ <div class="card" style="text-align:center">
+
+   <div style="font-size:60px">🏆</div>
+
+   <h1>จบแบบทดสอบ</h1>
+
+   <h2>${state.score}/${state.quiz.length}</h2>
+
+   <p>
+     ได้คะแนนประมาณ ${percent}%
+   </p>
+
+   <button
+     class="btn"
+     onclick="startQuiz('criminal')">
+     ทำใหม่
+   </button>
+
+   <br><br>
+
+   <button
+     class="btn light"
+     onclick="goHome()">
+     กลับหน้าแรก
+   </button>
+
+ </div>
+
+ `;
+}
+
+
+/* -------------------------
+   PALETTE
+------------------------- */
+
+const THEMES=[
+ ["ดำ","#111","#222"],
+ ["แดง","#b91c1c","#7f1d1d"],
+ ["น้ำเงิน","#1769aa","#0d47a1"],
+ ["เขียว","#167c4b","#0b5734"],
+ ["ขาว","#555","#222"],
+ ["ม่วง","#6d28d9","#4c1d95"],
+ ["ชมพู","#db2777","#9d174d"],
+ ["ส้ม","#ea580c","#9a3412"],
+ ["เหลือง","#b58900","#725900"],
+ ["ฟ้า","#0891b2","#155e75"],
+ ["กรมท่า","#172554","#0f172a"],
+ ["เทา","#4b5563","#1f2937"]
+];
+
+function openPalette(){
+
+ openModal(`
+
+ <button class="close" onclick="closeModal()">×</button>
+
+ <h2>🎨 เลือกสี LAWSTUDY</h2>
+
+ <div class="palette">
+
+ ${
+   THEMES.map((t,i)=>`
+
+   <button
+     class="color"
+     style="background:${t[1]}"
+     onclick="setTheme(${i})">
+     ${t[0]}
+   </button>
+
+   `).join("")
+ }
+
+ </div>
+ `);
+}
+
+function setTheme(i){
+
+ const t=THEMES[i];
+
+ document.documentElement.style.setProperty("--main",t[1]);
+ document.documentElement.style.setProperty("--main2",t[2]);
+ document.documentElement.style.setProperty("--accent",t[1]);
+
+ localStorage.setItem("lawstudy-theme",i);
+
+ closeModal();
+}
+
+function loadTheme(){
+
+ const i=
+   Number(localStorage.getItem("lawstudy-theme"));
+
+ if(Number.isInteger(i)&&THEMES[i])
+   setTheme(i);
+}
+
+
+/* -------------------------
+   MODAL
+------------------------- */
+
+function openModal(html){
+
+ document.getElementById("modalContent").innerHTML=html;
+
+ document.getElementById("modal").classList.add("show");
+
+ window.scrollTo({
+   top:0,
+   behavior:"smooth"
+ });
+}
+
+function closeModal(){
+ document.getElementById("modal").classList.remove("show");
+}
+
+document.getElementById("modal").addEventListener("click",e=>{
+ if(e.target.id==="modal")
+   closeModal();
+});
+
+
+/* -------------------------
+   HOME
+------------------------- */
+
+function goHome(){
+ closeModal();
+ renderHome();
+ window.scrollTo(0,0);
+}
+
+
+/* -------------------------
+   INIT
+------------------------- */
+
+renderHome();
+
+const saved=localStorage.getItem("lawstudy-theme");
+
+if(saved!==null){
+
+ const i=Number(saved);
+
+ if(THEMES[i]){
+   document.documentElement.style.setProperty("--main",THEMES[i][1]);
+   document.documentElement.style.setProperty("--main2",THEMES[i][2]);
+   document.documentElement.style.setProperty("--accent",THEMES[i][1]);
+ }
+}
+
+</script>
+
+</body>
+</html>
